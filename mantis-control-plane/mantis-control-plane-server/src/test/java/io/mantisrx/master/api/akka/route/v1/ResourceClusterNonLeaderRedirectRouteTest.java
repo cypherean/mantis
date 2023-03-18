@@ -76,8 +76,8 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 
 public class ResourceClusterNonLeaderRedirectRouteTest extends JUnitRouteTest {
@@ -113,7 +113,7 @@ public class ResourceClusterNonLeaderRedirectRouteTest extends JUnitRouteTest {
         testRoute(new ResourceClustersNonLeaderRedirectRoute(resourceClusters, resourceClusterRouteHandlerWithTestAdapter, system)
             .createRoute(route -> route));
 
-    @BeforeClass
+    @BeforeAll
     public static void init() {
         TestHelpers.setupMasterConfig();
     }
