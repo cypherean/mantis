@@ -37,6 +37,7 @@ buildscript {
 ext.versions = [
         flink    : "1.14.2",
         hadoop   : "2.7.7",
+        junit4   : "4.12",
         junit5   : "5.4.+",
         mockito  : "2.0.+",
         mockito3 : "3.+",
@@ -56,6 +57,10 @@ ext.libraries = [
         ],
         flinkRpcImpl   : [
                 "org.apache.flink:flink-rpc-akka:${versions.flink}",
+        ],
+        junit4         : [
+            "junit:junit:${versions.junit4}",
+            "org.junit.vintage:junit-vintage-engine:${versions.junit5}",
         ],
         hadoopCommon   : "org.apache.hadoop:hadoop-common:${versions.hadoop}",
         hadoopS3       : "org.apache.hadoop:hadoop-aws:${versions.hadoop}",
@@ -158,7 +163,9 @@ subprojects {
     }
 
     test {
-        useJUnitPlatform()
+        useJUnitPlatform {
+             includeEngines("junit-jupiter", "junit-vintage")
+        }
     }
 }
 
